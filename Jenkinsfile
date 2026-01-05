@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "tirupatipallu/devopsexamapp"
+        DOCKER_IMAGE = "tirupatipallu/java1"
         DOCKER_TAG   = "latest"
     }
 
@@ -31,6 +31,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
+                docker login
                     docker build -t $DOCKER_IMAGE:$DOCKER_TAG .
                 '''
             }
