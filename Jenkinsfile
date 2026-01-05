@@ -36,7 +36,7 @@ pipeline {
             }
         }
 
-        stage('Login to Docker Hub') {
+       /* stage('Login to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-creds',
@@ -48,7 +48,7 @@ pipeline {
                     '''
                 }
             }
-        }
+        }*/
 
         stage('Push Image to Docker Hub') {
             steps {
