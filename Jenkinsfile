@@ -17,8 +17,19 @@ node {
       // **       in the global configuration.           
       mvnHome = tool 'maven-3.9.6'
     }    
+	stage('check-java'){
+		sh '''
+echo "JAVA_HOME=$JAVA_HOME"
+which java
+java -version
+which javac
+javac -version
+'''
+	}
   
     stage('Build Project') {
+
+		
       // build project via maven
       sh "'${mvnHome}/bin/mvn' clean install"
     }
