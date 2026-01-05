@@ -57,14 +57,14 @@ pipeline {
                 script {
                     // Stop & remove old container (if exists)
                     sh """
-                    if [ \$(docker ps -aq -f name=tirupatipallu/java1) ]; then
-                        docker rm -f tirupatipallu/java1
+                    if [ \$(docker ps -aq -f name=java1) ]; then
+                        docker rm -f java1
                     fi
                     """
 
                     // Run latest container
                     sh """
-                    docker run -d --name tirupatipallu/java1 -p 3000:3000 tirupatipallu/java1
+                    docker run -d --name java1 -p 3000:3000 tirupatipallu/java1
                     """
                 }
             }
