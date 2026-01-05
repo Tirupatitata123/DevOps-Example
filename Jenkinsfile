@@ -51,6 +51,24 @@ pipeline {
                 '''
             }
         }
+    
+    stage("Deploy to Container") {
+            steps {
+                script {
+                    // Stop & remove old container (if exists)
+                    sh """
+                    if [ \$(docker ps -aq -f name=tirupatipallu/java1) ]; then
+                        docker rm -f tirupatipallu/java1
+                    fi
+                    """
+
+                    // Run latest container
+                    sh """
+                    docker run -d --name tirupatipallu/java1 -p 3000:3000 tirupatipallu/java1
+                    """
+                }
+            }
+    }
     }
 
     post {
