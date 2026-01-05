@@ -27,12 +27,13 @@ javac -version
 '''
 	}
   
-    stage('Build Project') {
-
-		
-      // build project via maven
-      sh "'${mvnHome}/bin/mvn' clean install"
+    stage('Build - Maven') {
+    steps {
+        sh '''
+            mvn clean install
+        '''
     }
+}
 		
     stage('Build Docker Image') {
       // build docker image
